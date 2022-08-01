@@ -24,6 +24,7 @@ const SideNav = () => {
                <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i className="bi bi-journal-text"></i><span>User Management</span><i className="bi bi-chevron-down ms-auto"></i> </a>
                <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                   <li> <Link to="user_registration"> <i className="bi bi-circle"></i><span>User Registration</span> </Link></li>
+                  <li> <Link to="userlist"> <i className="bi bi-circle"></i><span>Users</span> </Link></li>
 
                
                </ul>

@@ -31,6 +31,7 @@ function App() {
   <Route exact path="user_registration" element={<UserReg/>} />
   <Route exact path="organizations" element={<Organizations/>} />
   <Route exact path="Create_organizations" element={<CreateNewOrganizations/>} />
+  <Route exact path="userlist" element={<UserList/>} />
   
 
   </Route>

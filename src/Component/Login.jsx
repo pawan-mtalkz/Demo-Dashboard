@@ -1,36 +1,95 @@
 import React, { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
+// import { useCookies } from "react-cookie";
+// import Cookies from 'universal-cookie';
+import Cookies from "js-cookie";
+
+
 
 const Login = () => {
 
   const navigate = useNavigate();
 
-  const XSRF_TOKEN = new URL(
-    "http://api-server.mtalkz.com/sanctum/csrf-cookie"
-  );
+// cookie.save('csrftoken', csrfToken);
+// const cookies = new Cookies();
+// username: cookies.get('username')
+// Token request
 
-  const headers = {
-    "X-XSRF-TOKEN": "{XSRF_TOKEN}",
+// Cookies.get('XSRF-TOKEN');
+
+Cookies.set('amit', 'ux', { expires: 7 })
+console.log(Cookies.get('amit'))
+
+  axios({
+    url: 'http://api-server.mtalkz.com/sanctum/csrf-cookie',
+    method: 'get',
+    headers: {
+       'Content-Type': 'application/json',
+        Accept: "application/json",
+      }
+ })
+ .then(response => {
+  console.log(response.Cookies);
+  let cookie = response.headers['XSRF-TOKEN']
+ console.log('set-cookie header value', cookie)
+ }) 
+ 
+ .catch(err => {
+    console.log(err);
+ });
+
+
+// login request
+
+
+ axios.post('http://api-server.mtalkz.com/auth/login', {"email":"admin@mtalkz.com","password":"m2)A!2k2^a4M(n"}, {
+  headers: {
     "Content-Type": "application/json",
-    Accept: "application/json",
-  };
+    "Accept": "application/json",
+    
+  }
+}
+)
 
-  console.log(XSRF_TOKEN);
 
-  function getData() {
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getData() {
     fetch("http://api-server.mtalkz.com/organizations", {
       method: "GET",
-      headers,
+   
     })
       .then((res) => res.json())
       .then((res) => console.log(res));
   }
 
   getData();
-
-
-
- 
 
   const [message, setError] = useState({
     status: false,

@@ -14,7 +14,7 @@ const CreateNewOrganizations = () => {
                            <div class="col-md-6 "> <input type="email" class="form-control" name="email" placeholder="Your Email" required=""/></div>
                            <div class="col-md-12"> <input type="text" class="form-control" name="subject" placeholder="Subject" required=""/></div>
                            <div class="col-md-12"><textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea></div>
-                           <div class="col-md-12 text-center">
+                           <div class="col-md-12 ">
                              
                               <button type="submit">Submit</button>
                            </div>

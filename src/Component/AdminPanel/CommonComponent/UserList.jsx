@@ -1,44 +1,45 @@
-import React from 'react'
+import React,{useState} from 'react'
+import data from '../Data/data.json'
+
 
 const UserList = () => {
    
-let RigisteredUser = localStorage.getItem('userslist');
-console.log(RigisteredUser)
-if(RigisteredUser && RigisteredUser.length){
-    const Rigistereddata=JSON.parse(RigisteredUser);
-    console.log(Rigistereddata);
-}
+   const [userData,setUserData]= useState(data);
+
+   console.log(userData);
 
   return (
     <>
-
-
-       <table class="table">
+  <table class="table">
                            <thead>
                               <tr>
-                                 <th scope="col">#</th>
+                                 <th scope="col">Id</th>
                                  <th scope="col">Name</th>
-                                 <th scope="col">Position</th>
-                                 <th scope="col">Age</th>
-                                 <th scope="col">Start Date</th>
+                                 <th scope="col">Email</th>
+                                 <th scope="col">Organization id</th>
+                                 <th scope="col">Action</th>
+                                
+                                
                               </tr>
                            </thead>
                            <tbody>
-                           {
-                           
-                            RigisteredUser.map(pobj => (       
-                                <tr>
-                                 <th scope="row">1</th>
-                                 <td>{pobj.Name}</td>
-                                 <td>Designer</td>
-                                 <td>28</td>
-                                 <td>2016-05-25</td>
+                           {data.users.map((item, index) => (
+           
+                              <tr>
+                                 <th scope="row">{item.id}</th>
+                                 <td>{item.name}</td>
+                                 <td>{item.email}</td>
+                                 <td>{item.organization_id}</td>
+                                 <td><button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+                                
                               </tr>
-
-                           ))}
-                        
+          ))}
+                         
+                              
+                            
                            </tbody>
                         </table>
+
    </>
   )
 }
